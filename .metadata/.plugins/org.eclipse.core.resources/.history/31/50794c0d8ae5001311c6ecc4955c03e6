@@ -1,0 +1,144 @@
+package EV3_leJOS;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JButton;
+
+import java.awt.BorderLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.rmi.RemoteException;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+import lejos.hardware.BrickFinder;
+import lejos.remote.ev3.RMIRegulatedMotor;
+import lejos.remote.ev3.RemoteEV3;
+
+
+public class Remote_Control extends JFrame{
+
+	private JFrame frame;
+	
+	public Remote_Control() {
+	      RemoteEV3 ev3 = (RemoteEV3) BrickFinder.getDefault();
+	      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	      JButton turn = new JButton("Turn");
+	      JButton forward = new JButton("Forward");
+	      JButton backward = new JButton("Backward");
+	      JButton left = new JButton("Left");
+	      JButton right = new JButton("Right");
+	      
+	      this.getContentPane().add(turn);
+	      this.getContentPane().add(forward);
+	      this.getContentPane().add(backward);
+	      this.getContentPane().add(left);
+	      this.getContentPane().add(right);
+	      
+	      final RMIRegulatedMotor leftMotor = ev3.createRegulatedMotor("D", 'L');
+	      final RMIRegulatedMotor rightMotor = ev3.createRegulatedMotor("A", 'L');
+	      
+	      turn.addActionListener(new ActionListener() {
+	         @Override
+	         public void actionPerformed(ActionEvent arg0) {
+	            try {
+	               leftMotor.rotate(500,true);
+	               rightMotor.rotate(-500);
+	            } catch (RemoteException e) {
+	               e.printStackTrace();
+	            }
+	         }         
+	      });
+	      
+	      
+	 
+	       addWindowListener(new WindowAdapter() {
+	           @Override
+	           public void windowClosing(WindowEvent e) {
+	              try {
+	               leftMotor.close();
+	               rightMotor.close();
+	            } catch (RemoteException e1) {
+	               e1.printStackTrace();
+	            }
+	           }
+	       });
+	   }
+	
+	
+	
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Remote_Control window = new Remote_Control();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public Remote_Control() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JButton btnForward = new JButton("Forward");
+		btnForward.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		frame.getContentPane().add(btnForward, BorderLayout.NORTH);
+		
+		JButton btnBackward = new JButton("Backward");
+		btnBackward.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		frame.getContentPane().add(btnBackward, BorderLayout.SOUTH);
+		
+		JButton btnLeft = new JButton("Left");
+		btnLeft.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		frame.getContentPane().add(btnLeft, BorderLayout.WEST);
+		
+		JButton btnRight = new JButton("Right");
+		btnRight.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		frame.getContentPane().add(btnRight, BorderLayout.EAST);
+		
+		JButton btnTurn = new JButton("Turn");
+		btnTurn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		frame.getContentPane().add(btnTurn, BorderLayout.CENTER);
+	}
+
+}

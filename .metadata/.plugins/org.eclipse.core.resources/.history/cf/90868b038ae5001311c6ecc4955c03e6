@@ -1,0 +1,60 @@
+package EV3_leJOS;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import java.awt.BorderLayout;
+
+public class Remote_Control {
+
+	private JFrame frame;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Remote_Control window = new Remote_Control();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public Remote_Control() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JButton btnForward = new JButton("Forward");
+		frame.getContentPane().add(btnForward, BorderLayout.NORTH);
+		
+		JButton btnBackward = new JButton("Backward");
+		frame.getContentPane().add(btnBackward, BorderLayout.SOUTH);
+		
+		JButton btnLeft = new JButton("Left");
+		frame.getContentPane().add(btnLeft, BorderLayout.WEST);
+		
+		JButton btnRight = new JButton("Right");
+		frame.getContentPane().add(btnRight, BorderLayout.EAST);
+		
+		JButton btnTurn = new JButton("Turn");
+		frame.getContentPane().add(btnTurn, BorderLayout.CENTER);
+	}
+
+}
