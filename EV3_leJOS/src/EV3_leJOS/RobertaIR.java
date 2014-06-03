@@ -1,5 +1,7 @@
 package EV3_leJOS;
 
+import org.jfree.util.WaitingImageObserver;
+
 import lejos.hardware.Button;
 import lejos.hardware.lcd.LCD;
 import lejos.hardware.motor.Motor;
@@ -9,6 +11,7 @@ import lejos.hardware.sensor.EV3TouchSensor;
 import lejos.hardware.sensor.EV3UltrasonicSensor;
 import lejos.robotics.RegulatedMotor;
 import lejos.robotics.SampleProvider;
+import lejos.robotics.navigation.DifferentialPilot;
 import lejos.utility.Delay;
 
 	
@@ -20,7 +23,9 @@ public static float distance = 255;
 		static RegulatedMotor leftMotor = Motor.D;
 		static RegulatedMotor rightMotor = Motor.A;
 		static EV3UltrasonicSensor sensorU;
+		static DifferentialPilot pilot = new DifferentialPilot(2.1f, 2.1f ,leftMotor, rightMotor,  false );
 		  
+		
 		public static void introMessage() {
 
 			LCD.drawString("Roberta DriveDemo", 0, 1);
@@ -34,14 +39,8 @@ public static float distance = 255;
 
 		public static void startSequence() {
 
-			leftMotor.resetTachoCount();
-		    rightMotor.resetTachoCount();
-
-		    leftMotor.rotateTo(0);
-		    rightMotor.rotateTo(0);
-
-		    leftMotor.setSpeed(400);
-		    rightMotor.setSpeed(400);
+			pilot.reset();
+			pilot.setAcceleration(100);
 
 		}
 		
@@ -63,13 +62,13 @@ public static float distance = 255;
 				}
 				driveStop();
 				driveChange();
+
 			
 			}
 			if(Button.ESCAPE.isDown()) System.exit(0);
 			
 		}
-
-
+		
 	    
 		private static boolean isDistance() {
 			float [] sample;
@@ -100,34 +99,31 @@ public static float distance = 255;
 		
 		
 		private static void driveRight() {
-			rightMotor.backward();
-			leftMotor.forward();
+			//pilot.rotateRight();
+			pilot.steer(100, -270);
 			
 		}
 
 
 		private static void driveLeft() {
-			leftMotor.backward();
-			rightMotor.forward();
+			//pilot.rotateLeft();
+			pilot.steer(100, 270);
 		}
 
 		
 		private static void driveStop() {
-			leftMotor.stop();
-			rightMotor.stop();
+			pilot.stop();
 		}
 
 
 		private static void driveBackward() {
-			leftMotor.backward();
-		    rightMotor.backward();
+			pilot.backward();
 			
 		}
 
 
 		private static void driveForward() {
-			leftMotor.forward();
-		    rightMotor.forward();
+			pilot.forward();
 			
 		}
 	}
