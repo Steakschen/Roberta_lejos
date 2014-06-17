@@ -1117,3 +1117,48 @@ org.lejos.ev3.ldt.util.LeJOSEV3Exception: EV3_HOME is not set. Please specify it
 	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:139)
 	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+!SESSION 2014-06-04 12:27:48.755 -----------------------------------------------
+eclipse.buildId=4.3.2.M20140221-1700
+java.version=1.6.0_65
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86, WS=cocoa, NL=de_DE
+Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/Carsten/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86 -product org.eclipse.epp.package.java.product -keyring /Users/Carsten/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2014-06-04 12:28:02.677
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.lejos.ev3.ldt 4 0 2014-06-04 12:28:14.430
+!MESSAGE EV3_HOME is not set. Please specify it in the plug-in's preferences
+!STACK 0
+org.lejos.ev3.ldt.util.LeJOSEV3Exception: EV3_HOME is not set. Please specify it in the plug-in's preferences
+	at org.lejos.ev3.ldt.util.LeJOSEV3Util.getEV3Home(LeJOSEV3Util.java:219)
+	at org.lejos.ev3.ldt.container.LeJOSEV3LibContainer.createClasspath(LeJOSEV3LibContainer.java:87)
+	at org.lejos.ev3.ldt.container.LeJOSEV3LibContainer.<init>(LeJOSEV3LibContainer.java:81)
+	at org.lejos.ev3.ldt.container.LeJOSEV3LibContainerInitializer.initialize(LeJOSEV3LibContainerInitializer.java:20)
+	at org.eclipse.jdt.internal.core.JavaModelManager.initializeContainer(JavaModelManager.java:2867)
+	at org.eclipse.jdt.internal.core.JavaModelManager$11.run(JavaModelManager.java:2773)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2345)
+	at org.eclipse.jdt.internal.core.JavaModelManager.initializeAllContainers(JavaModelManager.java:2813)
+	at org.eclipse.jdt.internal.core.JavaModelManager.getClasspathContainer(JavaModelManager.java:1897)
+	at org.eclipse.jdt.core.JavaCore.initializeAfterLoad(JavaCore.java:3990)
+	at org.eclipse.jdt.internal.ui.InitializeAfterLoadJob$RealJob.run(InitializeAfterLoadJob.java:36)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.lejos.ev3.ldt 4 0 2014-06-04 12:28:15.641
+!MESSAGE EV3_HOME is not set. Please specify it in the plug-in's preferences
+!STACK 0
+org.lejos.ev3.ldt.util.LeJOSEV3Exception: EV3_HOME is not set. Please specify it in the plug-in's preferences
+	at org.lejos.ev3.ldt.util.LeJOSEV3Util.getEV3Home(LeJOSEV3Util.java:219)
+	at org.lejos.ev3.ldt.container.LeJOSEV3LibContainer.createClasspath(LeJOSEV3LibContainer.java:87)
+	at org.lejos.ev3.ldt.container.LeJOSEV3LibContainer.<init>(LeJOSEV3LibContainer.java:81)
+	at org.lejos.ev3.ldt.container.LeJOSEV3LibContainerInitializer.initialize(LeJOSEV3LibContainerInitializer.java:20)
+	at org.eclipse.jdt.internal.core.JavaModelManager.initializeContainer(JavaModelManager.java:2867)
+	at org.eclipse.jdt.internal.core.JavaModelManager.getClasspathContainer(JavaModelManager.java:1902)
+	at org.eclipse.jdt.core.JavaCore.getClasspathContainer(JavaCore.java:3221)
+	at org.eclipse.jdt.internal.core.JavaProject.resolveClasspath(JavaProject.java:2692)
+	at org.eclipse.jdt.internal.core.JavaProject.resolveClasspath(JavaProject.java:2856)
+	at org.eclipse.jdt.internal.core.JavaProject.getResolvedClasspath(JavaProject.java:1961)
+	at org.eclipse.jdt.core.JavaCore.initializeAfterLoad(JavaCore.java:4023)
+	at org.eclipse.jdt.internal.ui.InitializeAfterLoadJob$RealJob.run(InitializeAfterLoadJob.java:36)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
